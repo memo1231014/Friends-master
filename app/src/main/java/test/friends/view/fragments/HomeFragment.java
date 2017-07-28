@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.android.volley.VolleyError;
 import com.github.javiersantos.bottomdialogs.BottomDialog;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,7 +36,6 @@ import test.friends.adapters.FriendsListAdapter;
 import test.friends.MUT;
 import test.friends.R;
 import test.friends.model.FriendsModel;
-import test.friends.presenter.FriendsPresenter;
 import test.friends.presenter.HomePresenter;
 import test.friends.view.HomeView;
 import test.friends.view.listeners.RecyclerItemClickListener;
@@ -101,14 +99,14 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, HomeVi
         friendsList.setLayoutManager(layoutManager);
         friendsList.setItemAnimator(new DefaultItemAnimator());
         friendsList.setAdapter(mAdapter);
-
+        mAdapter.notifyDataSetChanged();
 
         friendsList.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
 
                 //ignore if the user selected on the fake items
-                if (position == 0 || position == friendsNumbers) {
+                if (position == 0 || (position == (friendsNumbers-1))) {
                     return;
                 }
 
@@ -117,7 +115,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, HomeVi
                 selectedPosition = position;
 
                 //set all items as not selected then set the selected one as selected (color it with yellow)
-                for (int i = 0; i < friends.size(); i++) {
+                for (int i = 0; i < friendsNumbers; i++) {
                     if (i == position) {
                         friends.get(position).setSelected(true);
                     } else {
@@ -160,7 +158,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, HomeVi
         message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                MUT.sendMessage(getActivity(),friends.get(selectedPosition).getFirstName()+" "+friends.get(selectedPosition).getLastName());
             }
         });
     }

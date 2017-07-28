@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import test.friends.MUT;
 import test.friends.R;
 import test.friends.SqlLiteHelper;
 import test.friends.model.FriendsModel;
@@ -23,6 +24,7 @@ import test.friends.presenter.FriendsPresenter;
 import test.friends.view.FriendsView;
 import test.friends.view.fragments.FriendsFragment;
 import test.friends.view.fragments.HomeFragment;
+import test.friends.view.fragments.SendMessageFragment;
 
 import static test.friends.MUT.*;
 
@@ -80,15 +82,13 @@ public class MainActivity extends AppCompatActivity implements FriendsView {
     @Override
     public void onRequestError(Object object) {
         showErrorMessages(MainActivity.this, (VolleyError) object);
-
+        showLoading(false);
         //try to get from offline
         getOfflineData();
-        if(this.friends==null||this.friends.size()<1){
-            return;
-        }
+
 
         moveToPage(pageType);
-        showLoading(false);
+
     }
 
     @Override
@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements FriendsView {
         changeStyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 moveToPage(pageType);
             }
         });
@@ -125,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements FriendsView {
 
 
     private void moveToPage(int pageType) {
+
+        //to avoid adding many fragments when he go to sendMessage from listPage then press to switch button then go to the other page and add send message fragment from pager also on
+        getSupportFragmentManager().popBackStack();
+
+        if(this.friends==null||this.friends.size()<1){
+            return;
+        }
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("friendsList", friends);
         Fragment fragment ;
@@ -164,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements FriendsView {
                 }
 
             }
-
     }
+
+
 }

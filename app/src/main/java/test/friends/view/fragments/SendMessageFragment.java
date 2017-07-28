@@ -49,6 +49,7 @@ public class SendMessageFragment extends Fragment {
             public void onClick(View view) {
                 if (validate()) {
                     MUT.lToast(getActivity(), getResources().getString(R.string.message_sent));
+                    messageDetails.setText("");
                 }
             }
         });

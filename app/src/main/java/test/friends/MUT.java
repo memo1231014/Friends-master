@@ -8,6 +8,7 @@ import android.content.IntentSender;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -30,9 +31,10 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import test.friends.view.fragments.SendMessageFragment;
 
 
-    /************************************************************************\
+/************************************************************************\
                 This code written by Mohamed Atef
 
                              \|||||/
@@ -143,6 +145,14 @@ public class MUT {
             MUT.lToast(context, context.getResources().getString(R.string.server_error));
         }
     }
+
+        public static void sendMessage(Context context,String to){
+            Bundle bundle = new Bundle();
+            bundle.putString("friendName",to);
+            SendMessageFragment sendMessageFragment = new SendMessageFragment();
+            sendMessageFragment.setArguments(bundle);
+            MUT.addFragment(context,sendMessageFragment,"sendMessageFragment");
+        }
 
     public static void turnGPSOn(final Context context) {
         GoogleApiClient mGoogleApiClient;

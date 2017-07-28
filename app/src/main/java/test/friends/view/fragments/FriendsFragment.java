@@ -54,11 +54,7 @@ public class FriendsFragment extends Fragment {
             public void onReceive(Context context, Intent intent) {
                 int position = intent.getIntExtra("position", 0);
                 if(position==friendsPager.getCurrentItem()) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("friendName",friends.get(position).getFirstName()+" "+friends.get(position).getLastName());
-                    SendMessageFragment sendMessageFragment = new SendMessageFragment();
-                    sendMessageFragment.setArguments(bundle);
-                    MUT.addFragment(getActivity(),sendMessageFragment,"sendMessageFragment");
+                    MUT.sendMessage(getActivity(),friends.get(position).getFirstName()+" "+friends.get(position).getLastName());
                 }else {
                     friendsPager.setCurrentItem(position);
                 }
