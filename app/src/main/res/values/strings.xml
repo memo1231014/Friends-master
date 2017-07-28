@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Friends</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="call">Call</string>
+    <string name="email">E-mail</string>
+    <string name="message">Write your Message</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="check_connectoin">Please check your connection</string>
+    <string name="server_error">Server Error</string>
+    <string name="check_gps">Please make sure that your GPS working correctly</string>
+    <string name="enter_message">Please Enter Your message</string>
+    <string name="message_sent">Your message sent sucessfully</string>
+    <string name="message_to">Send message to </string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="message_warining">Sending will cost you some credit are you sure about that?</string>
+    <string name="no_friends">You still have no friends</string>
+    <string name="my_friends">My Friends</string>
+    <string name="wrong_phone">Wrong phone number</string>
+    <string name="wrong_mail">Wrong mail</string>
+    <string name="distance_message">Away from your position</string>
+    <string name="cant_get_distance">Something wrong happened and we can\'t get your distance to your friend </string>
+    <string name="double_click_to_close">Double click to close</string>
+</resources>

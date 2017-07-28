@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test.friends.view.customviews.CarouselRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_friend_circle_root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_friend_circle_name"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/tv_circle_background"
+        android:gravity="center"
+        android:textColor="@color/white"
+         />
+
+</test.friends.view.customviews.CarouselRelativeLayout>
