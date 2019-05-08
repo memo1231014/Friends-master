@@ -38,6 +38,3 @@ Check for wrong number may be some friend added wrong number by mistake it can c
 Same thing with E-mail may be some one add wrong e-mail (also backend should handle it)
 
 Sending message check if user typed empty message also prevent him from press on send button many times at once
-
-
-
